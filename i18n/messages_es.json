@@ -1,0 +1,51 @@
+{
+	"pathProgramming" : "Programación",
+
+	"nameBlock"    : "Bloque",
+	"defaultBlock" : "Descripción",
+	"leafBlock"    : "Bloque",
+
+	"nameIfThen"   : "Si-entonces",
+	"literalIf"    : "SI",
+	"literalThen"  : "ENTONCES",
+	"literalEndIf" : "FIN SI",
+	"leafIfThen"   : "Si-entonces",
+
+	"nameIfThenElse" : "Si-entonces-otro",
+	"literalElse"    : "OTRO CASO",
+	"leafIfThenElse" : "Si-entonces-otro",
+
+	"nameForTimes"  : "Ciclo PARA número",
+	"literalFor"    : "PARA",
+	"literalTimes"  : "VECES",
+	"literalEndFor" : "FIN PARA",
+	"leafForTimes"  : "Ciclo PARA número",
+
+	"nameForFromTo" : "Ciclo para-desde-hasta",
+	"literalFrom"   : "DESDE",
+	"literalTo"     : "HASTA",
+	"literalStep"   : "EN INCREMENTOS DE",
+	"leafForFromTo" : "Ciclo PARA desde-hasta",
+
+	"nameForIn" : "Ciclo PARA lista",
+	"literalIn" : "EN",
+	"leafForIn" : "Ciclo PARA lista",
+
+	"nameWhile"       : "Repetición mientras",
+	"literalWhile"    : "MIENTRAS",
+	"literalEndWhile" : "FIN MIENTRAS",
+	"leafWhile"       : "Repetición mientras",
+
+	"nameUntil"    : "Repetición hasta",
+	"literalDo"    : "HACER",
+	"literalUntil" : "HASTA",
+	"leafUntil"    : "Repetición hasta",
+
+	"nameConditional" : "Condicional",
+	"leafConditional" : "Condicional",
+
+	"nameInvertedIf"     : "SI invertido",
+	"operatorInvertedIf" : "SI",
+	"leafInvertedIf"     : "Si invertido",
+	"childrenInvertedIf" : [ "Acción si condición es cierta", "Condición" ]
+}

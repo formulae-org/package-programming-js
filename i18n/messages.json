@@ -1,0 +1,51 @@
+{
+	"pathProgramming" : "Programming",
+
+	"nameBlock"    : "Block",
+	"defaultBlock" : "Description",
+	"leafBlock"    : "Block",
+
+	"nameIfThen"   : "If-then",
+	"literalIf"    : "IF",
+	"literalThen"  : "THEN",
+	"literalEndIf" : "END IF",
+	"leafIfThen"   : "If then",
+
+	"nameIfThenElse" : "If-then-else",
+	"literalElse"    : "ELSE",
+	"leafIfThenElse" : "If then else",
+
+	"nameForTimes"  : "For-times",
+	"literalFor"    : "FOR",
+	"literalTimes"  : "TIMES",
+	"literalEndFor" : "END FOR",
+	"leafForTimes"  : "Repeat for times",
+
+	"nameForFromTo" : "For-from-to",
+	"literalFrom"   : "FROM",
+	"literalTo"     : "TO",
+	"literalStep"   : "STEP",
+	"leafForFromTo" : "Repeat from to",
+
+	"nameForIn" : "For-in",
+	"literalIn" : "IN",
+	"leafForIn" : "Repeat for in",
+
+	"nameWhile"       : "Repeat while",
+	"literalWhile"    : "WHILE",
+	"literalEndWhile" : "END WHILE",
+	"leafWhile"       : "Repeat while",
+
+	"nameUntil"    : "Repeat until",
+	"literalDo"    : "DO",
+	"literalUntil" : "UNTIL",
+	"leafUntil"    : "Repeat until",
+
+	"nameConditional" : "Conditional",
+	"leafConditional" : "Conditional",
+
+	"nameInvertedIf"     : "Inverted if",
+	"operatorInvertedIf" : "IF",
+	"leafInvertedIf"     : "inverted if",
+	"childrenInvertedIf" : [ "Action if condition is true", "Condition" ]
+}
