@@ -183,76 +183,31 @@ Programming.CodeBlock = class extends Programming.AbstractBlock {
 			this.vertBaseline = Math.round(this.width / 2);
 		}
 		else { // flowchar
-			if (false) {
-				let i, n = this.children.length, x;
+			let i, n = this.children.length;
+			let child;
+			this.width = 0;
+			this.height = 10;
+			
+			for (let i = 0; i < n; ++i) {
+				(child = this.children[i]).prepareDisplay(context);
 				
-				let childBorder;
-				let maxSemiWidth = 0;
-				let child;
-				
-				this.height = 10;
-				this.vertBaseline = 0;
-				
-				for (i = 0; i < n; ++i) {
-					(child = this.children[i]).prepareDisplay(context);
-					childBorder = Programming.isBlock(child) ? 0 : 10;
-					
-					if (i == 0) {
-						this.horzBaseline = 10 + childBorder + child.horzBaseline;
-					} else {
-						this.height += 10; // separator
-					}
-					
-					child.y = this.height + childBorder;
-					this.height += childBorder + child.height + childBorder;
-					
-					if ((x = child.vertBaseline + childBorder) > this.vertBaseline) {
-						this.vertBaseline = x;
-					}
-					if ((x = child.width - child.vertBaseline + childBorder) > maxSemiWidth) {
-						maxSemiWidth = x;
-					}
+				if (child.width > this.width) {
+					this.width = child.width;
 				}
 				
-				this.vertBaseline += 10;
-				maxSemiWidth += 10;
-				
-				this.width = this.vertBaseline + maxSemiWidth;
-				
-				for (i = 0; i < n; ++i) {
-					child = this.children[i];
-					child.x = this.vertBaseline - child.vertBaseline;
-				}
-				
-				this.height += 10;
+				child.y = this.height;
+				this.height += child.height + 10;
 			}
-			else {
-				let i, n = this.children.length;
-				let child;
-				this.width = 0;
-				this.height = 10;
-				
-				for (let i = 0; i < n; ++i) {
-					(child = this.children[i]).prepareDisplay(context);
-					
-					if (child.width > this.width) {
-						this.width = child.width;
-					}
-					
-					child.y = this.height;
-					this.height += child.height + 10;
-				}
-				
-				this.width += 2 * 10;
-				this.vertBaseline = Math.round(this.width / 2);
-				
-				for (i = 0; i < n; ++i) {
-					child = this.children[i];
-					child.x = this.vertBaseline - Math.round(child.width / 2);
-				}
-				
-				this.horzBaseline = Math.round(this.height / 2);
+			
+			this.width += 2 * 10;
+			this.vertBaseline = Math.round(this.width / 2);
+			
+			for (i = 0; i < n; ++i) {
+				child = this.children[i];
+				child.x = this.vertBaseline - Math.round(child.width / 2);
 			}
+			
+			this.horzBaseline = Math.round(this.height / 2);
 		}
 	}
 	
@@ -281,54 +236,17 @@ Programming.CodeBlock = class extends Programming.AbstractBlock {
 			context.strokeStyle = bkpStrokeStyle;
 		}
 		else { // flowchart
-			if (false) {
-				let child;
-				let childBorder;
+			let child;
+			for (let i = 0, n = this.children.length; i < n; ++i) {
+				child = this.children[i];
 				
-				for (let i = 0, n = this.children.length; i < n; ++i) {
-					child = this.children[i];
-					
-					childBorder = Programming.isBlock(child) ? 0 : 10;
-					
-					if (i > 0) {
-						context.beginPath();
-						context.moveTo(0.5 + x + this.vertBaseline, y + child.y - childBorder - 10);
-						context.lineTo(0.5 + x + this.vertBaseline, y + child.y - childBorder);
-						context.stroke();
-					}
-					
-					if (childBorder > 0) {
-						context.strokeRect(
-							0.5 + x + child.x - childBorder,
-							0.5 + y + child.y - 10,
-							child.width  + 2 * 10 - 1,
-							child.height + 2 * 10 - 1
-						);
-					}
-					
-					child.display(context, x + child.x, y + child.y);
-				}
-				
-				//if (n == 1) {
-					let bkpStrokeStyle = context.strokeStyle;
-					context.strokeStyle = "orange";
-					context.strokeRect(0.5 + x, 0.5 + y, this.width - 1, this.height - 1);
-					context.strokeStyle = bkpStrokeStyle;
-				//}
+				child.display(context, x + child.x, y + child.y);
 			}
-			else {
-				let child;
-				for (let i = 0, n = this.children.length; i < n; ++i) {
-					child = this.children[i];
-					
-					child.display(context, x + child.x, y + child.y);
-				}
-				
-				let bkpStrokeStyle = context.strokeStyle;
-				context.strokeStyle = "orange";
-				context.strokeRect(0.5 + x, 0.5 + y, this.width - 1, this.height - 1);
-				context.strokeStyle = bkpStrokeStyle;
-			}
+			
+			let bkpStrokeStyle = context.strokeStyle;
+			context.strokeStyle = "orange";
+			context.strokeRect(0.5 + x, 0.5 + y, this.width - 1, this.height - 1);
+			context.strokeStyle = bkpStrokeStyle;
 		}
 	}
 }
