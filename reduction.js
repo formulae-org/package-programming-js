@@ -387,15 +387,15 @@ Programming.conditionalSwitch = async (_switch, session) => {
 
 Programming.setReducers = () => {
 	ReductionManager.addReducer("Programming.Block",             Programming.blockReducer);
-	ReductionManager.addReducer("Programming.If",                Programming.ifReducer,         true);
-	ReductionManager.addReducer("Programming.InvertedIf",        Programming.invertedIfReducer, true);
-	ReductionManager.addReducer("Programming.IfElse",            Programming.ifElseReducer,     true);
-	ReductionManager.addReducer("Programming.Conditional",       Programming.ifElseReducer,     true);
-	ReductionManager.addReducer("Programming.ForTimes",          Programming.forTimesReducer,   true);
-	ReductionManager.addReducer("Programming.ForFromTo",         Programming.forFromToReducer,  true);
-	ReductionManager.addReducer("Programming.ForIn",             Programming.forInReducer,      true);
-	ReductionManager.addReducer("Programming.While",             Programming.whileReducer,      true);
-	ReductionManager.addReducer("Programming.Until",             Programming.untilReducer,      true);
-	ReductionManager.addReducer("Programming.ComparativeSwitch", Programming.comparativeSwitch, true);
-	ReductionManager.addReducer("Programming.ConditionalSwitch", Programming.conditionalSwitch, true);
+	ReductionManager.addReducer("Programming.If",                Programming.ifReducer,         { special: true });
+	ReductionManager.addReducer("Programming.InvertedIf",        Programming.invertedIfReducer, { special: true });
+	ReductionManager.addReducer("Programming.IfElse",            Programming.ifElseReducer,     { special: true });
+	ReductionManager.addReducer("Programming.Conditional",       Programming.ifElseReducer,     { special: true });
+	ReductionManager.addReducer("Programming.ForTimes",          Programming.forTimesReducer,   { special: true });
+	ReductionManager.addReducer("Programming.ForFromTo",         Programming.forFromToReducer,  { special: true });
+	ReductionManager.addReducer("Programming.ForIn",             Programming.forInReducer,      { special: true });
+	ReductionManager.addReducer("Programming.While",             Programming.whileReducer,      { special: true });
+	ReductionManager.addReducer("Programming.Until",             Programming.untilReducer,      { special: true });
+	ReductionManager.addReducer("Programming.ComparativeSwitch", Programming.comparativeSwitch, { special: true });
+	ReductionManager.addReducer("Programming.ConditionalSwitch", Programming.conditionalSwitch, { special: true });
 };
