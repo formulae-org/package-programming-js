@@ -137,27 +137,27 @@ Programming.forFromToReducer = async (_for, session) => {
 	let body = _for.children[0];
 	
 	// from
-	let from = CanonicalArithmetic.expr2CanonicalNumeric(_for.children[2]);
-	if (from === null) {
+	if (!_for.children[2].isInternalNumber()) {
 		ReductionManager.setInError(_for.children[2], "Expression must be numeric");
 		throw new ReductionError();
 	}
+	let from = _for.children[2].get("Value");
 	
 	// to
-	let to = CanonicalArithmetic.expr2CanonicalNumeric(_for.children[3]);
-	if (to === null) {
+	if (!_for.children[3].isInternalNumber()) {
 		ReductionManager.setInError(_for.children[3], "Expression must be numeric");
 		throw new ReductionError();
 	}
+	let to = _for.children[3].get("Value");
 	
 	// step
 	let step;
 	if (n == 5) {
-		step = CanonicalArithmetic.expr2CanonicalNumeric(_for.children[4]);
-		if (step === null) {
+		if (!_for.children[4].isInternalNumber()) {
 			ReductionManager.setInError(_for.children[4], "Expression must be numeric");
 			throw new ReductionError();
 		}
+		step = _for.children[4].get("Value");
 	} else {
 		step = new CanonicalArithmetic.Integer(1n);
 	}
@@ -183,8 +183,10 @@ Programming.forFromToReducer = async (_for, session) => {
 			}
 		}
 		
-		scopeEntry.setValue(CanonicalArithmetic.canonicalNumeric2Expr(from));
-
+		scopeEntry.setValue(
+			CanonicalArithmetic.canonical2InternalNumber(from)
+		);
+		
 		_for.setChild(0, body.clone());
 		await session.reduce(_for.children[0]);
 		

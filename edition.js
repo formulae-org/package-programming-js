@@ -53,20 +53,20 @@ Programming.blockDescriptionAction = {
 };
 
 Programming.setEditions = function() {
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafBlock,       () => Expression.wrapperEdition ("Programming.Block"));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafBlock, () => Expression.wrapperEdition ("Programming.Block"));
 
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafIfThen,      () => Expression.multipleEdition("Programming.If",                2, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafInvertedIf,  () => Expression.binaryEdition  ("Programming.InvertedIf",        false));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafIfThenElse,  () => Expression.multipleEdition("Programming.IfElse",            3, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafConditional, () => Expression.multipleEdition("Programming.Conditional",       3, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, "Conditional switch",          () => Expression.multipleEdition("Programming.ConditionalSwitch", 2, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, "Comparative switch",          () => Expression.multipleEdition("Programming.ComparativeSwitch", 3, 0));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafIfThen,            () => Expression.multipleEdition("Programming.If",                2, 0));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafInvertedIf,        () => Expression.binaryEdition  ("Programming.InvertedIf",        false));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafIfThenElse,        () => Expression.multipleEdition("Programming.IfElse",            3, 0));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafConditional,       () => Expression.multipleEdition("Programming.Conditional",       3, 0));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafConditionalSwitch, () => Expression.multipleEdition("Programming.ConditionalSwitch", 2, 0));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafComparativeSwitch, () => Expression.multipleEdition("Programming.ComparativeSwitch", 3, 0));
 
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafForTimes,    () => Expression.multipleEdition("Programming.ForTimes",          2, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafForFromTo,   () => Expression.multipleEdition("Programming.ForFromTo",         4, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafForIn,       () => Expression.multipleEdition("Programming.ForIn",             3, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafWhile,       () => Expression.multipleEdition("Programming.While",             2, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafUntil,       () => Expression.binaryEdition  ("Programming.Until",             false));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafForTimes,  () => Expression.multipleEdition("Programming.ForTimes",  2, 0));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafForFromTo, () => Expression.multipleEdition("Programming.ForFromTo", 4, 0));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafForIn,     () => Expression.multipleEdition("Programming.ForIn",     3, 0));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafWhile,     () => Expression.multipleEdition("Programming.While",     2, 0));
+	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafUntil,     () => Expression.binaryEdition  ("Programming.Until",     false));
 };
 
 Programming.setActions = function() {

@@ -1,51 +1,59 @@
 {
 	"pathProgramming" : "Programación",
-
+	
 	"nameBlock"    : "Bloque",
 	"defaultBlock" : "Descripción",
 	"leafBlock"    : "Bloque",
-
+	
 	"nameIfThen"   : "Si-entonces",
-	"literalIf"    : "SI",
-	"literalThen"  : "ENTONCES",
-	"literalEndIf" : "FIN SI",
+	"literalIf"    : "si",
+	"literalThen"  : "entonces",
+	"literalEndIf" : "fin si",
 	"leafIfThen"   : "Si-entonces",
-
+	
 	"nameIfThenElse" : "Si-entonces-otro",
-	"literalElse"    : "OTRO CASO",
+	"literalElse"    : "otro",
 	"leafIfThenElse" : "Si-entonces-otro",
-
+	
 	"nameForTimes"  : "Ciclo PARA número",
-	"literalFor"    : "PARA",
-	"literalTimes"  : "VECES",
-	"literalEndFor" : "FIN PARA",
+	"literalFor"    : "para",
+	"literalTimes"  : "veces",
+	"literalEndFor" : "fin para",
 	"leafForTimes"  : "Ciclo PARA número",
-
+	
 	"nameForFromTo" : "Ciclo para-desde-hasta",
-	"literalFrom"   : "DESDE",
-	"literalTo"     : "HASTA",
-	"literalStep"   : "EN INCREMENTOS DE",
+	"literalFrom"   : "desde",
+	"literalTo"     : "hasta",
+	"literalStep"   : "en incrementos de",
 	"leafForFromTo" : "Ciclo PARA desde-hasta",
-
+	
 	"nameForIn" : "Ciclo PARA lista",
-	"literalIn" : "EN",
+	"literalIn" : "en",
 	"leafForIn" : "Ciclo PARA lista",
-
+	
 	"nameWhile"       : "Repetición mientras",
-	"literalWhile"    : "MIENTRAS",
-	"literalEndWhile" : "FIN MIENTRAS",
+	"literalWhile"    : "mientras",
+	"literalEndWhile" : "fin mientras",
 	"leafWhile"       : "Repetición mientras",
-
+	
 	"nameUntil"    : "Repetición hasta",
-	"literalDo"    : "HACER",
-	"literalUntil" : "HASTA",
+	"literalDo"    : "hacer",
+	"literalUntil" : "hasta",
 	"leafUntil"    : "Repetición hasta",
-
+	
 	"nameConditional" : "Condicional",
 	"leafConditional" : "Condicional",
-
+	
+	"nameComparativeSwitch" : "Caso comparativo",
+	"nameConditionalSwitch" : "Caso condicional",
+	"literalSwitch"         : "caso",
+	"literalWhen"           : "cuando",
+	"literalEndSwitch"      : "fin caso",
+	"leafComparativeSwitch" : "Caso comparativo",
+	"leafConditionalSwitch" : "Caso condicional",
+	
 	"nameInvertedIf"     : "SI invertido",
-	"operatorInvertedIf" : "SI",
+	"operatorInvertedIf" : "si",
 	"leafInvertedIf"     : "Si invertido",
 	"childrenInvertedIf" : [ "Acción si condición es cierta", "Condición" ]
 }

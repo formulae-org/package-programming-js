@@ -278,6 +278,9 @@ Programming.IfWhileCode = class extends Expression {
 				this.children[i].prepareDisplay(context);
 			}
 			
+			let bkpBold = context.fontInfo.bold;
+			context.fontInfo.setBold(context, true);
+			
 			switch (this.type) {
 				case 1:
 					this.elseWidth = Math.round(context.measureText(Programming.messages.literalElse).width);
@@ -292,6 +295,8 @@ Programming.IfWhileCode = class extends Expression {
 					this.endWidth = Math.round(context.measureText(Programming.messages.literalEndWhile).width);
 					break;
 			}
+			
+			context.fontInfo.setBold(context, bkpBold);
 			
 			let child;
 			
@@ -454,6 +459,9 @@ Programming.IfWhileCode = class extends Expression {
 				(child = this.children[i]).display(context, x + child.x, y + child.y);
 			}
 			
+			let bkpBold = context.fontInfo.bold;
+			context.fontInfo.setBold(context, true);
+			
 			// if, while
 			child = this.children[0];
 			super.drawText(context, this.type == 2 ? Programming.messages.literalWhile : Programming.messages.literalIf, x, y + child.horzBaseline + Math.round(context.fontInfo.size / 2));
@@ -471,11 +479,13 @@ Programming.IfWhileCode = class extends Expression {
 			
 			// end if, end while
 			super.drawText(context, this.type == 2 ? Programming.messages.literalEndWhile : Programming.messages.literalEndIf, x, y + this.height);
-
+			
+			context.fontInfo.setBold(context, bkpBold);
+			
 			let bkpStrokeStyle = context.strokeStyle;
 			context.strokeStyle = "orange";
 			context.beginPath();
-
+			
 			// 'true' or 'while' |
 			child = this.children[1];
 			if (!(child.getTag() == "Programming.Block" && child.expanded)) {
@@ -714,7 +724,7 @@ Programming.ForCode = class extends Expression {
 			case 2: return "Programming.ForIn";
 		}
 	}
-
+	
 	getName() {
 		switch (this.type) {
 			case 0: return Programming.messages.nameForTimes;
@@ -722,7 +732,7 @@ Programming.ForCode = class extends Expression {
 			case 2: return Programming.messages.nameForIn;
 		}
 	}
-
+	
 	canHaveChildren(count) {
 		switch (this.type) {
 			case 0: return count == 2;
@@ -730,7 +740,7 @@ Programming.ForCode = class extends Expression {
 			case 2: return count == 3;
 		}
 	}
-
+	
 	prepareDisplay(context) {
 		if (Programming.codeStyle) {
 			// children preparation
@@ -761,9 +771,12 @@ Programming.ForCode = class extends Expression {
 			
 			// labels
 			
+			let bkpBold = context.fontInfo.bold;
+			context.fontInfo.setBold(context, true);
+			
 			this.forWidth = Math.round(context.measureText(Programming.messages.literalFor).width);
 			this.endWidth = Math.round(context.measureText(Programming.messages.literalEndFor).width);
-
+			
 			if (n == 2) {
 				this.timesInFromWidth = Math.round(context.measureText(Programming.messages.literalTimes).width);
 			}
@@ -775,6 +788,8 @@ Programming.ForCode = class extends Expression {
 				this.toWidth = Math.round(context.measureText(Programming.messages.literalTo).width);
 				if (n == 5) this.stepWidth = Math.round(context.measureText(Programming.messages.literalStep).width);
 			}
+			
+			context.fontInfo.setBold(context, bkpBold);
 			
 			this.width = (this.children[1].x = this.forWidth + 10) + this.children[1].width;
 			if (n == 2) {
@@ -871,6 +886,9 @@ Programming.ForCode = class extends Expression {
 			let child, body = this.children[0];
 			let i, n = this.children.length;
 			
+			let bkpBold = context.fontInfo.bold;
+			context.fontInfo.setBold(context, true);
+			
 			for (i = 0; i < n; ++i) {
 				child = this.children[i];
 				
@@ -899,6 +917,8 @@ Programming.ForCode = class extends Expression {
 			}
 			
 			super.drawText(context, Programming.messages.literalEndFor, x, y + body.y + body.height + 10 + context.fontInfo.size);
+			
+			context.fontInfo.setBold(context, bkpBold);
 			
 			for (i = 0; i < n; ++i) {
 				(child = this.children[i]).display(context, x + child.x, y + child.y);
@@ -1027,8 +1047,13 @@ Programming.UntilCode = class extends Expression.BinaryExpression {
 			body.prepareDisplay(context);
 			condition.prepareDisplay(context);
 			
+			let bkpBold = context.fontInfo.bold;
+			context.fontInfo.setBold(context, true);
+			
 			this.doWidth = Math.round(context.measureText(Programming.messages.literalo).width);
 			this.untilWidth = Math.round(context.measureText(Programming.messages.literalUntil).width);
+			
+			context.fontInfo.setBold(context, bkpBold);
 			
 			this.width = (block ? 0 : 30) + body.width;
 			
@@ -1077,9 +1102,14 @@ Programming.UntilCode = class extends Expression.BinaryExpression {
 			let body = this.children[0];
 			let condition = this.children[1];
 			
+			let bkpBold = context.fontInfo.bold;
+			context.fontInfo.setBold(context, true);
+			
 			super.drawText(context, Programming.messages.literalDo, x, y + context.fontInfo.size);
 			super.drawText(context, Programming.messages.literalUntil, x, y + condition.y + condition.horzBaseline + Math.round(context.fontInfo.size / 2));
-				
+			
+			context.fontInfo.setBold(context, bkpBold);
+			
 			body.display(context, x + body.x, y + body.y);
 			condition.display(context, x + condition.x, y + condition.y);
 			
@@ -1388,21 +1418,28 @@ Programming.displaySwitchFlowchart = function(comparative, expr, context, x, y) 
 
 Programming.ComparativeSwitch = class extends Expression {
 	getTag() { return "Programming.ComparativeSwitch"; }
-	getName() { return "Comparative switch"; }
+	getName() { return Programming.messages.nameComparativeSwitch; }
 	canHaveChildren(count) { return count >= 3; }
 	
 	prepareDisplay(context) {
 		if (Programming.codeStyle) {
 			let child;
 			
-			let v1 = Math.round(30 + context.measureText("WHEN").width + 10);
+			let bkpBold = context.fontInfo.italic;
+			context.fontInfo.setBold(context, true);
+			
+			let v1 = Math.round(30 + context.measureText(Programming.messages.literalWhen).width + 10);
 			let v2 = 0;
 			
 			// comparand
 			
 			(child = this.children[0]).prepareDisplay(context);
-			child.x = Math.round(context.measureText("SWITCH").width + 10);
+			
+			child.x = Math.round(context.measureText(Programming.messages.literalSwitch).width + 10);
 			child.y = 0;
+			
+			context.fontInfo.setBold(context, bkpBold);
+			
 			this.width = child.x + child.width;
 			this.height = child.height + 10;
 			
@@ -1493,7 +1530,10 @@ Programming.ComparativeSwitch = class extends Expression {
 		if (Programming.codeStyle) {
 			// switch
 			
-			super.drawText(context, "SWITCH", x, y + this.children[0].horzBaseline + context.fontInfo.semiHeight);
+			let bkpBold = context.fontInfo.italic;
+			context.fontInfo.setBold(context, true);
+			
+			super.drawText(context, Programming.messages.literalSwitch, x, y + this.children[0].horzBaseline + context.fontInfo.semiHeight);
 			
 			// cases
 			
@@ -1503,20 +1543,22 @@ Programming.ComparativeSwitch = class extends Expression {
 			for (let c = 0; c < cases; ++c) {
 				child = this.children[2 * c + 2];
 				
-				super.drawText(context, "WHEN", x + 30,           y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
-				super.drawText(context, ":",    x + child.x - 10, y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
+				super.drawText(context, Programming.messages.literalWhen, x + 30,           y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
+				super.drawText(context, ":",                              x + child.x - 10, y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
 			}
 			
 			// else (if any)
 			
 			if ((this.children.length % 2) == 0) {
 				child = this.children[this.children.length - 1];
-				super.drawText(context, "ELSE", x + 30, y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
+				super.drawText(context, Programming.messages.literalElse, x + 30, y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
 			}
 			
 			// end switch
 			
-			super.drawText(context, "END SWITCH", x, y + this.height);
+			super.drawText(context, Programming.messages.literalEndSwitch, x, y + this.height);
+			
+			context.fontInfo.setBold(context, bkpBold);
 			
 			// subexpressions
 			
@@ -1555,65 +1597,70 @@ Programming.ComparativeSwitch = class extends Expression {
 
 Programming.ConditionalSwitch = class extends Expression {
 	getTag() { return "Programming.ConditionalSwitch"; }
-	getName() { return "Conditional switch"; }
+	getName() { return Programming.messages.nameConditionalSwitch; }
 	canHaveChildren(count) { return count >= 2; }
-
+	
 	prepareDisplay(context) {
 		if (Programming.codeStyle) {
 			let child;
 			
-			let v1 = Math.round(30 + context.measureText("WHEN").width + 10);
+			let bkpBold = context.fontInfo.italic;
+			context.fontInfo.setBold(context, true);
+			
+			let v1 = Math.round(30 + context.measureText(Programming.messages.literalWhen).width + 10);
 			let v2 = 0;
-
+			
 			// switch
-
-			this.width = Math.round(context.measureText("SWITCH").width);
+			
+			this.width = Math.round(context.measureText(Programming.messages.literalSwitch).width);
 			this.height = context.fontInfo.size + 10;
-
+			
+			context.fontInfo.setBold(context, bkpBold);
+			
 			// cases
-
+			
 			let cases = Math.floor(this.children.length / 2);
 			let child1, child2;
-
+			
 			for (let c = 0; c < cases; ++c) {
 				(child1 = this.children[2 * c    ]).prepareDisplay(context);
 				(child2 = this.children[2 * c + 1]).prepareDisplay(context);
-
+				
 				child1.x = v1;
-
+				
 				this.height += Math.max(child1.horzBaseline, child2.horzBaseline);
 				child1.y = this.height - child1.horzBaseline;
 				child2.y = this.height - child2.horzBaseline;
 				this.height += Math.max(child1.height - child1.horzBaseline, child2.height - child2.horzBaseline);
 				this.height += 10;
-
+				
 				if (child1.width > v2) v2 = child1.width;
 			}
-
+			
 			v2 = v1 + v2 + 10 + 10;
-
+			
 			for (let c = 0; c < cases; ++c) {
 				child2 = this.children[2 * c + 1];
-
+				
 				child2.x = v2;
 				if (child2.x + child2.width > this.width) this.width = child2.x + child2.width;
 			}
-
+			
 			// else (if any)
-
+			
 			if ((this.children.length % 2) != 0) {
 				(child = this.children[this.children.length - 1]).prepareDisplay(context);
-
+				
 				child.y = this.height;
 				this.height += child.height;
 				this.height += 10;
-
+				
 				child.x = v1;
 				if (child.x + child.width > this.width) this.width = child.x + child.width;
 			}
-
+			
 			// end switch
-
+			
 			this.height += context.fontInfo.size;
 			this.horzBaseline = context.fontInfo.semiHeight;
 			this.vertBaseline = Math.round(this.width / 2);
@@ -1626,39 +1673,44 @@ Programming.ConditionalSwitch = class extends Expression {
 	display(context, x, y) {
 		if (Programming.codeStyle) {
 			// switch
-
-			super.drawText(context, "SWITCH", x, y + context.fontInfo.size);
-
+			
+			let bkpBold = context.fontInfo.italic;
+			context.fontInfo.setBold(context, true);
+			
+			super.drawText(context, Programming.messages.literalSwitch, x, y + context.fontInfo.size);
+			
 			// cases
-
+			
 			let child;
 			let cases = Math.floor(this.children.length / 2);
-
+			
 			for (let c = 0; c < cases; ++c) {
 				child = this.children[2 * c + 1];
-
-				super.drawText(context, "WHEN", x + 30,           y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
-				super.drawText(context, ":",    x + child.x - 10, y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
+				
+				super.drawText(context, Programming.messages.literalWhen, x + 30,           y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
+				super.drawText(context, ":",                              x + child.x - 10, y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
 			}
-
+			
 			// else (if any)
-
+			
 			if ((this.children.length % 2) != 0) {
 				child = this.children[this.children.length - 1];
-				super.drawText(context, "ELSE", x + 30, y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
+				super.drawText(context, Programming.messages.literalElse, x + 30, y + child.y + child.horzBaseline + context.fontInfo.semiHeight);
 			}
-
+			
 			// end switch
-
-			super.drawText(context, "END SWITCH", x, y + this.height);
-
+			
+			super.drawText(context, Programming.messages.literalEndSwitch, x, y + this.height);
+			
+			context.fontInfo.setBold(context, bkpBold);
+			
 			// subexpressions
-
+			
 			for (let i = 0, n = this.children.length; i < n; ++i) {
 				child = this.children[i];
 				child.display(context, x + child.x, y + child.y);
 			}
-
+			
 			// line
 			let bkpStrokeStyle = context.strokeStyle;
 			context.strokeStyle = "orange";
@@ -1680,7 +1732,7 @@ Programming.setExpressions = function(module) {
 	Formulae.setExpression(module, "Programming.Conditional",       Programming.Conditional);
 	Formulae.setExpression(module, "Programming.ComparativeSwitch", Programming.ComparativeSwitch);
 	Formulae.setExpression(module, "Programming.ConditionalSwitch", Programming.ConditionalSwitch);
-
+	
 	// if-then, if-then-else & while
 	[ "If", "IfElse", "While" ].forEach((tag, type) => Formulae.setExpression(module, "Programming." + tag, {
 		clazz: Programming.IfWhileCode,
@@ -1696,11 +1748,13 @@ Programming.setExpressions = function(module) {
 	// inverted if
 	Formulae.setExpression(module, "Programming.InvertedIf", {
 		clazz:        Expression.Infix,
-		getTag:       () => "Programming.InvertedIf",
-		getOperator:  () => Programming.messages.operatorInvertedIf,
-		getName:      () => Programming.messages.nameInvertedIf,
+		getTag:       ()    => "Programming.InvertedIf",
+		getOperator:  ()    => Programming.messages.operatorInvertedIf,
+		getName:      ()    => Programming.messages.nameInvertedIf,
 		getChildName: index => Programming.messages.childrenInvertedIf[index],
 		parentheses:  false,
+		bold:         true,
+		gap:          10,
 		min: 2, max: 2
 	});
 };

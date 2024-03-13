@@ -1,51 +1,59 @@
 {
 	"pathProgramming" : "Programming",
-
+	
 	"nameBlock"    : "Block",
 	"defaultBlock" : "Description",
 	"leafBlock"    : "Block",
-
+	
 	"nameIfThen"   : "If-then",
-	"literalIf"    : "IF",
-	"literalThen"  : "THEN",
-	"literalEndIf" : "END IF",
+	"literalIf"    : "if",
+	"literalThen"  : "then",
+	"literalEndIf" : "end if",
 	"leafIfThen"   : "If then",
-
+	
 	"nameIfThenElse" : "If-then-else",
-	"literalElse"    : "ELSE",
+	"literalElse"    : "else",
 	"leafIfThenElse" : "If then else",
-
+	
 	"nameForTimes"  : "For-times",
-	"literalFor"    : "FOR",
-	"literalTimes"  : "TIMES",
-	"literalEndFor" : "END FOR",
+	"literalFor"    : "for",
+	"literalTimes"  : "times",
+	"literalEndFor" : "end for",
 	"leafForTimes"  : "Repeat for times",
-
+	
 	"nameForFromTo" : "For-from-to",
-	"literalFrom"   : "FROM",
-	"literalTo"     : "TO",
-	"literalStep"   : "STEP",
+	"literalFrom"   : "from",
+	"literalTo"     : "to",
+	"literalStep"   : "step",
 	"leafForFromTo" : "Repeat from to",
-
+	
 	"nameForIn" : "For-in",
-	"literalIn" : "IN",
+	"literalIn" : "in",
 	"leafForIn" : "Repeat for in",
-
+	
 	"nameWhile"       : "Repeat while",
-	"literalWhile"    : "WHILE",
-	"literalEndWhile" : "END WHILE",
+	"literalWhile"    : "while",
+	"literalEndWhile" : "end while",
 	"leafWhile"       : "Repeat while",
-
+	
 	"nameUntil"    : "Repeat until",
-	"literalDo"    : "DO",
-	"literalUntil" : "UNTIL",
+	"literalDo"    : "do",
+	"literalUntil" : "until",
 	"leafUntil"    : "Repeat until",
-
+	
 	"nameConditional" : "Conditional",
 	"leafConditional" : "Conditional",
-
+	
+	"nameComparativeSwitch" : "Comparative switch",
+	"nameConditionalSwitch" : "Conditional switch",
+	"literalSwitch"         : "switch",
+	"literalWhen"           : "when",
+	"literalEndSwitch"      : "end switch",
+	"leafComparativeSwitch" : "Comparative switch",
+	"leafConditionalSwitch" : "Conditional switch",
+	
 	"nameInvertedIf"     : "Inverted if",
-	"operatorInvertedIf" : "IF",
+	"operatorInvertedIf" : "if",
 	"leafInvertedIf"     : "inverted if",
 	"childrenInvertedIf" : [ "Action if condition is true", "Condition" ]
 }
