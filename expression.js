@@ -71,27 +71,27 @@ Programming.AbstractBlock = class extends Expression {
 		super.get(name);
 	}
 	
-	setSerializationStrings(strings, promises) {
-		if (strings[0].length == 0) {
-			throw "Empty description";
-		}
-
-		if (strings[1] != "True" && strings[1] != "False") {
-			throw "Invalid expansion state";
-		}
-
-		this.set("Description", strings[0]);
-		this.set("Expanded",    strings[1] == "True");
-	}
-	
 	getSerializationNames() {
 		return [ "Description", "Expanded" ];
 	}
 	
-	getSerializationStrings() {
+	async getSerializationStrings() {
 		return [ this.description, this.expanded ? "True" : "False" ];
 	}
-
+	
+	setSerializationStrings(strings, promises) {
+		if (strings[0].length == 0) {
+			throw "Empty description";
+		}
+		
+		if (strings[1] != "True" && strings[1] != "False") {
+			throw "Invalid expansion state";
+		}
+		
+		this.set("Description", strings[0]);
+		this.set("Expanded",    strings[1] == "True");
+	}
+	
 	prepareDisplayCollapsed(context) {
 		this.width = 10 + Math.round(context.measureText(this.description).width) + 10;
 		this.height = 10 + context.fontInfo.size + 10;
