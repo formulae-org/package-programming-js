@@ -31,6 +31,9 @@ Programming.isBlock = function(expr) {
 		case "Programming.ForTimes":
 		case "Programming.ForFromTo":
 		case "Programming.ForIn":
+		case "Programming.CycleTimes":
+		case "Programming.CycleFromTo":
+		case "Programming.CycleIn":
 		case "Programming.While":
 		case "Programming.Until":
 		case "Programming.ConditionalSwitch":
@@ -1034,6 +1037,37 @@ Programming.ForCode = class extends Expression {
 	}
 }
 
+Programming.Cycle = class extends Expression.SummationLikeSymbol {
+	constructor() {
+		super();
+		this.symbol = "⟳";
+	}
+	
+	getTag() {
+		switch (this.type) {
+			case 0: return "Programming.CycleTimes";
+			case 1: return "Programming.CycleFromTo";
+			case 2: return "Programming.CycleIn";
+		}
+	}
+	
+	getName() {
+		switch (this.type) {
+			case 0: return Programming.messages.nameCycleTimes;
+			case 1: return Programming.messages.nameCycleFromTo;
+			case 2: return Programming.messages.nameCycleIn;
+		}
+	}
+	
+	canHaveChildren(count) {
+		switch (this.type) {
+			case 0: return count == 2;
+			case 1: return count >= 4 && count <= 5;
+			case 2: return count == 3;
+		}
+	}
+}
+
 Programming.UntilCode = class extends Expression.BinaryExpression {
 	getTag() { return "Programming.Until"; }
 	getName() { return Programming.messages.nameUntil; }
@@ -1742,6 +1776,12 @@ Programming.setExpressions = function(module) {
 	// for
 	[ "ForTimes", "ForFromTo", "ForIn" ].forEach((tag, type) => Formulae.setExpression(module, "Programming." + tag, {
 		clazz: Programming.ForCode,
+		type:  type
+	}));
+	
+	// cycle
+	[ "CycleTimes", "CycleFromTo", "CycleIn" ].forEach((tag, type) => Formulae.setExpression(module, "Programming." + tag, {
+		clazz: Programming.Cycle,
 		type:  type
 	}));
 	

@@ -388,16 +388,25 @@ Programming.conditionalSwitch = async (_switch, session) => {
 };
 
 Programming.setReducers = () => {
-	ReductionManager.addReducer("Programming.Block",             Programming.blockReducer,      "Programming.blockReducer");
-	ReductionManager.addReducer("Programming.If",                Programming.ifReducer,         "Programming.ifReducer", { special: true });
-	ReductionManager.addReducer("Programming.InvertedIf",        Programming.invertedIfReducer, "Programming.invertedIfReducer", { special: true });
-	ReductionManager.addReducer("Programming.IfElse",            Programming.ifElseReducer,     "Programming.ifElseReducer", { special: true });
-	ReductionManager.addReducer("Programming.Conditional",       Programming.ifElseReducer,     "Programming.ifElseReducer", { special: true });
-	ReductionManager.addReducer("Programming.ForTimes",          Programming.forTimesReducer,   "Programming.forTimesReducer", { special: true });
-	ReductionManager.addReducer("Programming.ForFromTo",         Programming.forFromToReducer,  "Programming.forFromToReducer", { special: true });
-	ReductionManager.addReducer("Programming.ForIn",             Programming.forInReducer,      "Programming.forInReducer", { special: true });
-	ReductionManager.addReducer("Programming.While",             Programming.whileReducer,      "Programming.whileReducer", { special: true });
-	ReductionManager.addReducer("Programming.Until",             Programming.untilReducer,      "Programming.untilReducer", { special: true });
+	ReductionManager.addReducer("Programming.Block", Programming.blockReducer, "Programming.blockReducer");
+	
+	ReductionManager.addReducer("Programming.If",          Programming.ifReducer,         "Programming.ifReducer",         { special: true });
+	ReductionManager.addReducer("Programming.InvertedIf",  Programming.invertedIfReducer, "Programming.invertedIfReducer", { special: true });
+	ReductionManager.addReducer("Programming.IfElse",      Programming.ifElseReducer,     "Programming.ifElseReducer",     { special: true });
+	ReductionManager.addReducer("Programming.Conditional", Programming.ifElseReducer,     "Programming.ifElseReducer",     { special: true });
+	
+	ReductionManager.addReducer("Programming.ForTimes",  Programming.forTimesReducer,  "Programming.forTimesReducer",  { special: true });
+	ReductionManager.addReducer("Programming.ForFromTo", Programming.forFromToReducer, "Programming.forFromToReducer", { special: true });
+	ReductionManager.addReducer("Programming.ForIn",     Programming.forInReducer,     "Programming.forInReducer",     { special: true });
+	
+	ReductionManager.addReducer("Programming.CycleTimes",  Programming.forTimesReducer,  "Programming.forTimesReducer",  { special: true });
+	ReductionManager.addReducer("Programming.CycleFromTo", Programming.forFromToReducer, "Programming.forFromToReducer", { special: true });
+	ReductionManager.addReducer("Programming.CycleIn",     Programming.forInReducer,     "Programming.forInReducer",     { special: true });
+	
+	ReductionManager.addReducer("Programming.While", Programming.whileReducer, "Programming.whileReducer", { special: true });
+	ReductionManager.addReducer("Programming.Until", Programming.untilReducer, "Programming.untilReducer", { special: true });
+	
 	ReductionManager.addReducer("Programming.ComparativeSwitch", Programming.comparativeSwitch, "Programming.comparativeSwitch", { special: true });
 	ReductionManager.addReducer("Programming.ConditionalSwitch", Programming.conditionalSwitch, "Programming.conditionalSwitch", { special: true });
 };
+

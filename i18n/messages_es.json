@@ -1,5 +1,6 @@
 {
-	"pathProgramming" : "Programación",
+	"pathProgramming"      : "Programación",
+	"pathProgrammingCycle" : "Programación.⟳",
 	
 	"nameBlock"    : "Bloque",
 	"defaultBlock" : "Descripción",
@@ -30,6 +31,10 @@
 	"nameForIn" : "Ciclo PARA lista",
 	"literalIn" : "en",
 	"leafForIn" : "Ciclo PARA lista",
+	
+	"nameCycleTimes"  : "Ciclo n veces",
+	"nameCycleFromTo" : "Ciclo desde-hasta",
+	"nameCycleIn"     : "Ciclo en",
 	
 	"nameWhile"       : "Repetición mientras",
 	"literalWhile"    : "mientras",
