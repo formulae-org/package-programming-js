@@ -32,9 +32,7 @@
 	"literalIn" : "en",
 	"leafForIn" : "Ciclo PARA lista",
 	
-	"nameCycleTimes"  : "Ciclo n veces",
-	"nameCycleFromTo" : "Ciclo desde-hasta",
-	"nameCycleIn"     : "Ciclo en",
+	"nameCycleTimes" : "Ciclo",
 	
 	"nameWhile"       : "Repetición mientras",
 	"literalWhile"    : "mientras",

@@ -235,6 +235,20 @@ Programming.forInReducer = async (_for, session) => {
 	return true;
 };
 
+Programming.cycle = async (cycle, session) => {
+	switch (cycle.children.length) {
+		case 2: // times
+			return await Programming.forTimesReducer(cycle, session);
+		
+		case 3: // in
+			return await Programming.forInReducer(cycle, session);
+		
+		case 4: // from-to
+		case 5: // from-to-step 
+			return await Programming.forFromToReducer(cycle, session);
+	}
+}
+
 Programming.whileReducer = async (whileExpr, session) => {
 	let copy = whileExpr.clone(), copyCopy;
 	let result = null;
@@ -399,9 +413,7 @@ Programming.setReducers = () => {
 	ReductionManager.addReducer("Programming.ForFromTo", Programming.forFromToReducer, "Programming.forFromToReducer", { special: true });
 	ReductionManager.addReducer("Programming.ForIn",     Programming.forInReducer,     "Programming.forInReducer",     { special: true });
 	
-	ReductionManager.addReducer("Programming.CycleTimes",  Programming.forTimesReducer,  "Programming.forTimesReducer",  { special: true });
-	ReductionManager.addReducer("Programming.CycleFromTo", Programming.forFromToReducer, "Programming.forFromToReducer", { special: true });
-	ReductionManager.addReducer("Programming.CycleIn",     Programming.forInReducer,     "Programming.forInReducer",     { special: true });
+	ReductionManager.addReducer("Programming.Cycle",  Programming.cycle, "Programming.cycle", { special: true });
 	
 	ReductionManager.addReducer("Programming.While", Programming.whileReducer, "Programming.whileReducer", { special: true });
 	ReductionManager.addReducer("Programming.Until", Programming.untilReducer, "Programming.untilReducer", { special: true });

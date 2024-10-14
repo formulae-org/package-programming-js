@@ -67,9 +67,9 @@ Programming.setEditions = function() {
 	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafForFromTo, () => Expression.multipleEdition("Programming.ForFromTo", 4, 0));
 	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafForIn,     () => Expression.multipleEdition("Programming.ForIn",     3, 0));
 	
-	Formulae.addEdition(this.messages.pathProgrammingCycle, "packages/org.formulae.programming/img/cycle4.png", null, () => Expression.multipleEdition("Programming.CycleFromTo", 4, 0));
-	Formulae.addEdition(this.messages.pathProgrammingCycle, "packages/org.formulae.programming/img/cycle3.png", null, () => Expression.multipleEdition("Programming.CycleIn",     3, 0));
-	Formulae.addEdition(this.messages.pathProgrammingCycle, "packages/org.formulae.programming/img/cycle2.png", null, () => Expression.multipleEdition("Programming.CycleTimes",  2, 0));
+	Formulae.addEdition(this.messages.pathProgrammingCycle, "packages/org.formulae.programming/img/cycle4.png", null, () => Expression.multipleEdition("Programming.Cycle", 4, 0));
+	Formulae.addEdition(this.messages.pathProgrammingCycle, "packages/org.formulae.programming/img/cycle3.png", null, () => Expression.multipleEdition("Programming.Cycle", 3, 0));
+	Formulae.addEdition(this.messages.pathProgrammingCycle, "packages/org.formulae.programming/img/cycle2.png", null, () => Expression.multipleEdition("Programming.Cycle", 2, 0));
 	
 	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafWhile,     () => Expression.multipleEdition("Programming.While", 2, 0));
 	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafUntil,     () => Expression.binaryEdition  ("Programming.Until", false));

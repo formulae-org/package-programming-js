@@ -32,9 +32,7 @@
 	"literalIn" : "in",
 	"leafForIn" : "Repeat for in",
 	
-	"nameCycleTimes"  : "Cycle times",
-	"nameCycleFromTo" : "Cycle from-to",
-	"nameCycleIn"     : "Cycle in",
+	"nameCycle" : "Cycle",
 	
 	"nameWhile"       : "Repeat while",
 	"literalWhile"    : "while",
