@@ -184,7 +184,7 @@ Programming.forFromToReducer = async (_for, session) => {
 		}
 		
 		scopeEntry.setValue(
-			CanonicalArithmetic.createInternalNumber(from)
+			CanonicalArithmetic.createInternalNumber(from, session)
 		);
 		
 		_for.setChild(0, body.clone());
