@@ -100,7 +100,7 @@ Programming.forTimesReducer = async (_for, session) => {
 	// reducing the number
 	let numberExpression = await session.reduceAndGet(_for.children[1], 1);
 	
-	let n = CanonicalArithmetic.getNativeInteger(numberExpression);
+	let n = Arithmetic.getNativeInteger(numberExpression);
 	if (n === undefined || n < 0) {
 		ReductionManager.setInError(numberExpression, "Invalid number");
 		throw new ReductionError();
@@ -159,7 +159,7 @@ Programming.forFromToReducer = async (_for, session) => {
 		}
 		step = _for.children[4].get("Value");
 	} else {
-		step = CanonicalArithmetic.getIntegerOne(session);;
+		step = Arithmetic.getIntegerOne(session);;
 	}
 	
 	// sign
@@ -173,25 +173,25 @@ Programming.forFromToReducer = async (_for, session) => {
 	
 	iterating: while (true) {
 		if (negative) {
-			if (CanonicalArithmetic.comparison(from, to, session) < 0) {
+			if (Arithmetic.comparison(from, to, session) < 0) {
 				break iterating;
 			}
 		}
 		else {
-			if (CanonicalArithmetic.comparison(from, to, session) > 0) {
+			if (Arithmetic.comparison(from, to, session) > 0) {
 				break iterating;
 			}
 		}
 		
 		scopeEntry.setValue(
-			CanonicalArithmetic.createInternalNumber(from, session)
+			Arithmetic.createInternalNumber(from, session)
 		);
 		
 		_for.setChild(0, body.clone());
 		await session.reduce(_for.children[0]);
 		
 		// step
-		from = CanonicalArithmetic.addition(from, step, session);
+		from = Arithmetic.addition(from, step, session);
 	}
 	
 	_for.replaceBy(_for.children[0]);
