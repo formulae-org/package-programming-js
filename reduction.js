@@ -413,6 +413,10 @@ Programming.setReducers = () => {
 	ReductionManager.addReducer("Programming.ForFromTo", Programming.forFromToReducer, "Programming.forFromToReducer", { special: true });
 	ReductionManager.addReducer("Programming.ForIn",     Programming.forInReducer,     "Programming.forInReducer",     { special: true });
 	
+	ReductionManager.addReducer("Programming.InvertedForTimes",  Programming.forTimesReducer,  "Programming.forTimesReducer",  { special: true });
+	ReductionManager.addReducer("Programming.InvertedForFromTo", Programming.forFromToReducer, "Programming.forFromToReducer", { special: true });
+	ReductionManager.addReducer("Programming.InvertedForIn",     Programming.forInReducer,     "Programming.forInReducer",     { special: true });
+	
 	ReductionManager.addReducer("Programming.Cycle",  Programming.cycle, "Programming.cycle", { special: true });
 	
 	ReductionManager.addReducer("Programming.While", Programming.whileReducer, "Programming.whileReducer", { special: true });
