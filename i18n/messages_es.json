@@ -25,11 +25,16 @@
 	"leafInvertedForTimes" : "Ciclo PARA número invertido",
 	
 	"nameForFromTo"         : "Ciclo para-desde-hasta",
-	"nameInvertedForFromTo" : "Ciclo para-desde-hasta invertido",
 	"literalFrom"           : "desde",
 	"literalTo"             : "hasta",
 	"literalStep"           : "en incrementos de",
 	"leafForFromTo"         : "Ciclo PARA desde-hasta",
+	
+	"nameInvertedForFromTo" : "Ciclo para-desde-hasta invertido",
+	"literalInvertedIn"     : "∈",
+	"literalInvertedFrom"   : "=",
+	"literalInvertedTo"     : "..",
+	"literalInvertedStep"   : "Δ",
 	"leafInvertedForFromTo" : "Ciclo PARA desde-hasta invertido",
 	
 	"nameForIn"         : "Ciclo PARA lista",

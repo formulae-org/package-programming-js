@@ -1089,24 +1089,27 @@ Programming.InvertedFor = class extends Expression {
 		
 		// labels
 		
-		let bkpBold = context.fontInfo.bold;
-		context.fontInfo.setBold(context, true);
-		
-		this.forWidth = Math.round(context.measureText(Programming.messages.literalFor).width);
+		{
+			let bkpBold = context.fontInfo.bold;
+			context.fontInfo.setBold(context, true);
+			
+			this.forWidth = Math.round(context.measureText(Programming.messages.literalFor).width);
+			
+			context.fontInfo.setBold(context, bkpBold);
+		}
 		
 		if (n == 2) {        // expr for n times
 			this.timesInFromWidth = Math.round(context.measureText(Programming.messages.literalTimes).width);
 		}
 		else if (n == 3) {   // expr for i in list
-			this.timesInFromWidth = Math.round(context.measureText(Programming.messages.literalIn).width);
+			this.timesInFromWidth = Math.round(context.measureText(Programming.messages.literalInvertedIn).width);
 		}
 		else { // n >= 4     // expr for i form a to b [ step s ]
-			this.timesInFromWidth = Math.round(context.measureText(Programming.messages.literalFrom).width);
-			this.toWidth = Math.round(context.measureText(Programming.messages.literalTo).width);
-			if (n == 5) this.stepWidth = Math.round(context.measureText(Programming.messages.literalStep).width);
+			this.timesInFromWidth = Math.round(context.measureText(Programming.messages.literalInvertedFrom).width);
+			this.toWidth = Math.round(context.measureText(Programming.messages.literalInvertedTo).width);
+			if (n == 5) this.stepWidth = Math.round(context.measureText(Programming.messages.literalInvertedStep).width);
 		}
 		
-		context.fontInfo.setBold(context, bkpBold);
 		
 		this.children[0].x = 0; // expr
 		this.width = this.children[0].width + 10 + this.forWidth + 10;
@@ -1144,41 +1147,56 @@ Programming.InvertedFor = class extends Expression {
 		let child;
 		let i, n = this.children.length;
 		
-		let bkpBold = context.fontInfo.bold;
-		context.fontInfo.setBold(context, true);
-		
 		for (i = 0; i < n; ++i) {
 			child = this.children[i];
 			
 			switch (i) {
-				case 0:
-					super.drawText(
-						context, Programming.messages.literalFor,
-						x + child.width + 10,
-						y + this.horzBaseline + Math.round(context.fontInfo.size / 2)
-					);
+				case 0: {
+						let bkpBold = context.fontInfo.bold;
+						context.fontInfo.setBold(context, true);
+						
+						super.drawText(
+							context, Programming.messages.literalFor,
+							x + child.width + 10,
+							y + this.horzBaseline + Math.round(context.fontInfo.size / 2)
+						);
+						
+						context.fontInfo.setBold(context, bkpBold);
+					}
 					break;
 					
 				case 1:
 					super.drawText(
 						context,
-						n == 2 ? Programming.messages.literalTimes : (n == 3 ? Programming.messages.literalIn : Programming.messages.literalFrom),
+						n == 2 ? Programming.messages.literalTimes : (n == 3 ? Programming.messages.literalInvertedIn : Programming.messages.literalInvertedFrom),
 						x + child.x + child.width + 10,
 						y + this.horzBaseline + Math.round(context.fontInfo.size / 2)
 					);
 					break;
 					
 				case 2:
-					if (n >= 4) super.drawText(context, Programming.messages.literalTo, x + child.x + child.width + 10, y + this.horzBaseline + Math.round(context.fontInfo.size / 2));
+					if (n >= 4) {
+						super.drawText(
+							context,
+							Programming.messages.literalInvertedTo,
+							x + child.x + child.width + 10,
+							y + this.horzBaseline + Math.round(context.fontInfo.size / 2)
+						);
+					}
 					break;
 					
 				case 3:
-					if (n == 5) super.drawText(context, Programming.messages.literalStep, x + child.x + child.width + 10, y + this.horzBaseline + Math.round(context.fontInfo.size / 2));
+					if (n == 5) {
+						super.drawText(
+							context,
+							Programming.messages.literalInvertedStep,
+							x + child.x + child.width + 10,
+							y + this.horzBaseline + Math.round(context.fontInfo.size / 2)
+						);
+					}
 					break;
 			}
 		}
-		
-		context.fontInfo.setBold(context, bkpBold);
 		
 		for (i = 0; i < n; ++i) {
 			(child = this.children[i]).display(context, x + child.x, y + child.y);

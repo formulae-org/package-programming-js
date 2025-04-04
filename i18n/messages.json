@@ -25,11 +25,16 @@
 	"leafInvertedForTimes" : "Repeat inverted for-times",
 	
 	"nameForFromTo"         : "For-from-to",
-	"nameInvertedForFromTo" : "Inverted for-from-to",
 	"literalFrom"           : "from",
 	"literalTo"             : "to",
 	"literalStep"           : "step",
 	"leafForFromTo"         : "Repeat from-to",
+	
+	"nameInvertedForFromTo" : "Inverted for-from-to",
+	"literalInvertedIn"     : "∈",
+	"literalInvertedFrom"   : "=",
+	"literalInvertedTo"     : "..",
+	"literalInvertedStep"   : "Δ",
 	"leafInvertedForFromTo" : "Repeat inverted from-to",
 	
 	"nameForIn"         : "For-in",
