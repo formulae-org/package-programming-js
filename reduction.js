@@ -401,6 +401,24 @@ Programming.conditionalSwitch = async (_switch, session) => {
 	return true;
 };
 
+/*
+Programming.getLineIterator = async (getLineIterator, session) => {
+	let iterable = getLineIterator.children[0];
+	if (!iterable.isLineIterator()) {
+		return false;
+	}
+	
+	let iterator = Formulae.createExpression("Programming.LineIterator");
+	iterator.iterable = iterable;
+	
+	getLineIterator.replaceBy(iterator);
+	return true;
+};
+
+Programming.getNext = async (getNext, session) => {
+};
+*/
+
 Programming.setReducers = () => {
 	ReductionManager.addReducer("Programming.Block", Programming.blockReducer, "Programming.blockReducer");
 	
@@ -424,5 +442,10 @@ Programming.setReducers = () => {
 	
 	ReductionManager.addReducer("Programming.ComparativeSwitch", Programming.comparativeSwitch, "Programming.comparativeSwitch", { special: true });
 	ReductionManager.addReducer("Programming.ConditionalSwitch", Programming.conditionalSwitch, "Programming.conditionalSwitch", { special: true });
+	
+	/*
+	ReductionManager.addReducer("Programming.GetLineIterator", Programming.getLineIterator, "Programming.getLineIterator");
+	ReductionManager.addReducer("Programming.GetNext", Programming.getNext, "Programming.getLineIterator");
+	*/
 };
 

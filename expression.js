@@ -1950,6 +1950,41 @@ Programming.setExpressions = function(module) {
 		gap:          10,
 		min: 2, max: 2
 	});
+	
+	/*
+	// 1-parameter functions
+	[ "GetLineIterator" ].forEach(tag => Formulae.setExpression(module, "Programming." + tag, {
+		clazz:        Expression.Function,
+		getTag:       () => "Programming." + tag,
+		//getMnemonic:  () => ExpressionPackage.messages["mnemonic" + tag],
+		//getName:      () => ExpressionPackage.messages["name" + tag],
+		//getChildName: index => ExpressionPackage.messages["child" + tag]
+		getMnemonic:  () => "GetLineIterator",
+		getName:      () => "Get line iterator",
+		getChildName: index => "Iterable expression"
+	}));
+	
+	Formulae.setExpression(module, "Programming.LineIterator", {
+		clazz:      Expression.Literal,
+		getTag:     () => "Programming.GetLineIterator", 
+		//getLiteral: () => this.messages.literalTrue, 
+		//getName:    () => this.messages.nameTrue,
+		getLiteral: () => "<LineIterator>", 
+		getName:    () => "Line iterator"
+	});
+	
+	// 1-parameter functions
+	[ "GetNext" ].forEach(tag => Formulae.setExpression(module, "Programming." + tag, {
+		clazz:        Expression.Function,
+		getTag:       () => "Programming." + tag,
+		//getMnemonic:  () => ExpressionPackage.messages["mnemonic" + tag],
+		//getChildName: index => ExpressionPackage.messages["child" + tag]
+		//getName:      () => ExpressionPackage.messages["name" + tag],
+		getMnemonic:  () => "GetNext",
+		getName:      () => "Get next element from iterator",
+		getChildName: index => "Iterator"
+	}));
+	*/
 };
 
 Programming.isConfigurable = () => true;
@@ -1983,3 +2018,4 @@ Programming.onChangeStyle = function(codeStyle) {
 	Programming.codeStyle = codeStyle;
 	Formulae.refreshHandlers();
 };
+
