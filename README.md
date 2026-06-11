@@ -1,16 +1,12 @@
 # package-programming-js
 
-Programming package for the [Fōrmulæ](https://formulae.org) programming language.
+Structured programming for [Fōrmulæ](https://formulae.org) — the visual environment for **computing**, **composing**, and **conversing** with tree-structured expressions.
 
-Fōrmulæ is also a software framework for visualization, edition and manipulation of complex expressions, from many fields. The code for an specific field —i.e. arithmetics— is encapsulated in a single unit called a Fōrmulæ **package**.
+This repository contains the **programming package**: visualization (in two styles — flowchart and indented code) and reduction of structured-programming expressions (blocks, conditionals, loops). These expressions make Fōrmulæ a [Turing-complete](https://formulae.org/?script=examples/Universal_Turing_machine) visual programming language.
 
-This repository contains the source code for the **programming package**. It constains visualization and reduction for structured programming expressions.
+> Part of the [formulae-org](https://github.com/formulae-org) organization: the [web application](https://github.com/formulae-org/formulae-js) plus one repository per package.
 
-The GitHub organization [formulae-org](https://github.com/formulae-org) encompasses the source code for the rest of packages, as well as the [web application](https://github.com/formulae-org/formulae-js).
-
-<!--
-Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) to know the capabilities of the Fōrmulæ arithmetic package.
--->
+▶ **[Showcase](https://formulae.org/?script=showcases/Programming)** — worked examples of this package.
 
 ### Capabilities ###
 
