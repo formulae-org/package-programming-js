@@ -16,7 +16,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-'use strict';
+"use strict";
 
 export class Programming extends Formulae.Package {}
 
@@ -158,7 +158,8 @@ Programming.forFromToReducer = async (_for, session) => {
 			throw new ReductionError();
 		}
 		step = _for.children[4].get("Value");
-	} else {
+	}
+	else {
 		step = Arithmetic.getIntegerOne(session);;
 	}
 	
@@ -217,11 +218,11 @@ Programming.forInReducer = async (_for, session) => {
 	let body = _for.children[0];
 	
 	////////////////////////////////
-
+	
 	_for.createScope();
 	let scopeEntry = new ScopeEntry();
 	_for.putIntoScope(symbol.get("Name"), scopeEntry, false);
-
+	
 	for (let i = 0, m = list.children.length; i < m; ++i) {
 		scopeEntry.setValue(list.children[i].clone());
 		

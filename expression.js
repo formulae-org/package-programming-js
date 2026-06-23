@@ -16,7 +16,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-'use strict';
+"use strict";
 
 export class Programming extends Formulae.Package {}
 
@@ -542,7 +542,7 @@ Programming.IfWhileCode = class extends Expression {
 						right.display(context, x + right.x, y + right.y);
 						
 						super.drawText(context, "?", x + condition.x + condition.width + 5, y + condition.y + condition.horzBaseline + offset);
-
+						
 						if (rightBorder != 0) {
 							context.strokeRect(x + right.x - rightBorder, y + right.y - rightBorder, right.width + 2 * rightBorder, right.height + 2 * rightBorder);
 						}
@@ -667,7 +667,7 @@ Programming.IfWhileCode = class extends Expression {
 						context.stroke();
 						
 						condition.display(context, x + condition.x, y + condition.y);
-
+						
 						super.drawText(context, "?", x + condition.x + condition.width + 5, y + condition.y + condition.horzBaseline + offset);
 						
 						//      0 ->
@@ -884,7 +884,7 @@ Programming.ForCode = class extends Expression {
 			this.horzBaseline += 10;
 		}
 	}
-		
+	
 	display(context, x, y) {
 		if (Programming.codeStyle) {
 			let child, body = this.children[0];
@@ -1142,7 +1142,7 @@ Programming.InvertedFor = class extends Expression {
 		this.height = this.horzBaseline + maxSemi;
 		this.vertBaseline = Math.round(this.width / 2);
 	}
-		
+	
 	display(context, x, y) {
 		let child;
 		let i, n = this.children.length;
@@ -1217,7 +1217,7 @@ Programming.Cycle = class extends Expression.SummationLikeSymbol {
 Programming.UntilCode = class extends Expression.BinaryExpression {
 	getTag() { return "Programming.Until"; }
 	getName() { return Programming.messages.nameUntil; }
-
+	
 	prepareDisplay(context) {
 		if (Programming.codeStyle) {
 			let body = this.children[0];
@@ -1328,7 +1328,7 @@ Programming.UntilCode = class extends Expression.BinaryExpression {
 			context.stroke();
 			
 			condition.display(context, x + condition.x, y + condition.y);
-
+			
 			super.drawText(context, "?", x + condition.x + condition.width + 5, y + condition.y + condition.horzBaseline + offset);
 			
 			//      0 ->
@@ -1358,7 +1358,7 @@ Programming.Conditional = class extends Expression {
 	getTag() { return "Programming.Conditional"; }
 	getName() { return Programming.messages.nameConditional; }
 	canHaveChildren(count) { return count == 3; }
-
+	
 	prepareDisplay(context) {
 		let i, child;
 		
