@@ -2017,5 +2017,6 @@ Programming.onChangeStyle = function(codeStyle) {
 	
 	Programming.codeStyle = codeStyle;
 	Formulae.refreshHandlers();
+	Formulae.loadReloadEditions(); // rebuild the edition panel so the style-dependent construct icons reflect the Code/Flowchart choice
 };
 

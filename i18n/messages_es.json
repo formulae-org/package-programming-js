@@ -44,7 +44,10 @@
 	"leafInvertedForIn" : "Ciclo PARA lista invertido",
 	
 	"nameCycle" : "Ciclo",
-	
+	"leafCycleTimes"  : "Ciclo un número de veces",
+	"leafCycleIn"     : "Ciclo sobre una lista",
+	"leafCycleFromTo" : "Ciclo en un rango",
+
 	"nameWhile"       : "Repetición mientras",
 	"literalWhile"    : "mientras",
 	"literalEndWhile" : "fin mientras",
@@ -69,5 +72,8 @@
 	"nameInvertedIf"     : "SI invertido",
 	"operatorInvertedIf" : "si",
 	"leafInvertedIf"     : "Si invertido",
-	"childrenInvertedIf" : [ "Acción si condición es cierta", "Condición" ]
+	"childrenInvertedIf" : [ "Acción si condición es cierta", "Condición" ],
+
+	"actionExpandCollapseBlock" : "Expandir/colapsar bloque",
+	"actionChangeBlockDescription" : "Cambiar la descripción del bloque..."
 }

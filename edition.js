@@ -22,7 +22,7 @@ export class Programming extends Formulae.Package {}
 
 Programming.blockExpandCollapseAction = {
 	isAvailableNow: () => true,
-	getDescription: () => "Expand/collapse block",
+	getDescription: () => Programming.messages.actionExpandCollapseBlock,
 	doAction: () => {
 		Formulae.sExpression.expanded = !Formulae.sExpression.expanded;
 		
@@ -34,7 +34,7 @@ Programming.blockExpandCollapseAction = {
 
 Programming.blockDescriptionAction = {
 	isAvailableNow: () => Formulae.sHandler.type != Formulae.ROW_OUTPUT,
-	getDescription: () => "Change the description of the block...",
+	getDescription: () => Programming.messages.actionChangeBlockDescription,
 	doAction: () => {
 		let s = Formulae.sExpression.get("Description");
 		do {
@@ -53,31 +53,45 @@ Programming.blockDescriptionAction = {
 };
 
 Programming.setEditions = function() {
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafBlock, () => Expression.wrapperEdition ("Programming.Block"));
-	
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafIfThen,            () => Expression.multipleEdition("Programming.If",          2, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafInvertedIf,        () => Expression.binaryEdition  ("Programming.InvertedIf",  false));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafIfThenElse,        () => Expression.multipleEdition("Programming.IfElse",      3, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafConditional,       () => Expression.multipleEdition("Programming.Conditional", 3, 0));
-	
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafConditionalSwitch, () => Expression.multipleEdition("Programming.ConditionalSwitch", 2, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafComparativeSwitch, () => Expression.multipleEdition("Programming.ComparativeSwitch", 3, 0));
-	
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafForTimes,  () => Expression.multipleEdition("Programming.ForTimes",  2, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafForFromTo, () => Expression.multipleEdition("Programming.ForFromTo", 4, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafForIn,     () => Expression.multipleEdition("Programming.ForIn",     3, 0));
-	
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafInvertedForTimes,  () => Expression.multipleEdition("Programming.InvertedForTimes",  2, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafInvertedForFromTo, () => Expression.multipleEdition("Programming.InvertedForFromTo", 4, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafInvertedForIn,     () => Expression.multipleEdition("Programming.InvertedForIn",     3, 0));
-	
-	Formulae.addEdition(this.messages.pathProgrammingCycle, "packages/org.formulae.programming/img/cycle4.png", null, () => Expression.multipleEdition("Programming.Cycle", 4, 0));
-	Formulae.addEdition(this.messages.pathProgrammingCycle, "packages/org.formulae.programming/img/cycle3.png", null, () => Expression.multipleEdition("Programming.Cycle", 3, 0));
-	Formulae.addEdition(this.messages.pathProgrammingCycle, "packages/org.formulae.programming/img/cycle2.png", null, () => Expression.multipleEdition("Programming.Cycle", 2, 0));
-	
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafWhile,     () => Expression.multipleEdition("Programming.While", 2, 0));
-	Formulae.addEdition(this.messages.pathProgramming, null, this.messages.leafUntil,     () => Expression.binaryEdition  ("Programming.Until", false));
-	
+	// Block (wrapper) — Programming.Block requires its Description/Expanded serialized
+	// attributes (setSerializationStrings reads strings[0].length), so it can't use
+	// addWrapperEditions, whose attribute-less XML would deserialize to null → crash.
+	Formulae.addEdition(
+		this.messages.pathProgramming,
+		'<expression tag="Programming.Block" Description="x" Expanded="True"><expression tag="Visualization.Selected"><expression tag="Null"/></expression></expression>',
+		this.messages.leafBlock,
+		() => Expression.wrapperEdition("Programming.Block")
+	);
+
+	// Conditionals
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.If",          2), this.messages.leafIfThen,      () => Expression.multipleEdition("Programming.If",          2, 0));
+	Formulae.addBinaryEdition(this.messages, "Programming", "InvertedIf", "Programming.InvertedIf");
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.IfElse",      3), this.messages.leafIfThenElse,  () => Expression.multipleEdition("Programming.IfElse",      3, 0));
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.Conditional", 3), this.messages.leafConditional, () => Expression.multipleEdition("Programming.Conditional", 3, 0));
+
+	// Switches
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.ConditionalSwitch", 2), this.messages.leafConditionalSwitch, () => Expression.multipleEdition("Programming.ConditionalSwitch", 2, 0));
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.ComparativeSwitch", 3), this.messages.leafComparativeSwitch, () => Expression.multipleEdition("Programming.ComparativeSwitch", 3, 0));
+
+	// For loops
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.ForTimes",  2), this.messages.leafForTimes,  () => Expression.multipleEdition("Programming.ForTimes",  2, 0));
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.ForFromTo", 4), this.messages.leafForFromTo, () => Expression.multipleEdition("Programming.ForFromTo", 4, 0));
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.ForIn",     3), this.messages.leafForIn,     () => Expression.multipleEdition("Programming.ForIn",     3, 0));
+
+	// Inverted for loops
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.InvertedForTimes",  2), this.messages.leafInvertedForTimes,  () => Expression.multipleEdition("Programming.InvertedForTimes",  2, 0));
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.InvertedForFromTo", 4), this.messages.leafInvertedForFromTo, () => Expression.multipleEdition("Programming.InvertedForFromTo", 4, 0));
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.InvertedForIn",     3), this.messages.leafInvertedForIn,     () => Expression.multipleEdition("Programming.InvertedForIn",     3, 0));
+
+	// Cycle (⟳) — SummationLikeSymbol; replaces the former cycle*.png icons. type 4 = range, 3 = list, 2 = times
+	Formulae.addEdition(this.messages.pathProgrammingCycle, Formulae.icon("Programming.Cycle", 4), this.messages.leafCycleFromTo, () => Expression.multipleEdition("Programming.Cycle", 4, 0));
+	Formulae.addEdition(this.messages.pathProgrammingCycle, Formulae.icon("Programming.Cycle", 3), this.messages.leafCycleIn,     () => Expression.multipleEdition("Programming.Cycle", 3, 0));
+	Formulae.addEdition(this.messages.pathProgrammingCycle, Formulae.icon("Programming.Cycle", 2), this.messages.leafCycleTimes,  () => Expression.multipleEdition("Programming.Cycle", 2, 0));
+
+	// While / until
+	Formulae.addEdition(this.messages.pathProgramming, Formulae.icon("Programming.While", 2), this.messages.leafWhile, () => Expression.multipleEdition("Programming.While", 2, 0));
+	Formulae.addBinaryEdition(this.messages, "Programming", "Until", "Programming.Until");
+
 	/*
 	Formulae.addEdition(this.messages.pathProgramming, null, "GetLineIterator", () => Expression.wrapperEdition ("Programming.GetLineIterator"));
 	Formulae.addEdition(this.messages.pathProgramming, null, "GetNext",         () => Expression.wrapperEdition ("Programming.GetNext"));

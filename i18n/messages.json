@@ -44,7 +44,10 @@
 	"leafInvertedForIn" : "Repeat inverted for-in",
 	
 	"nameCycle" : "Cycle",
-	
+	"leafCycleTimes"  : "Cycle a number of times",
+	"leafCycleIn"     : "Cycle over a list",
+	"leafCycleFromTo" : "Cycle over a range",
+
 	"nameWhile"       : "Repeat while",
 	"literalWhile"    : "while",
 	"literalEndWhile" : "end while",
@@ -69,5 +72,8 @@
 	"nameInvertedIf"     : "Inverted if",
 	"operatorInvertedIf" : "if",
 	"leafInvertedIf"     : "inverted if",
-	"childrenInvertedIf" : [ "Action if condition is true", "Condition" ]
+	"childrenInvertedIf" : [ "Action if condition is true", "Condition" ],
+
+	"actionExpandCollapseBlock" : "Expand/collapse block",
+	"actionChangeBlockDescription" : "Change the description of the block..."
 }
