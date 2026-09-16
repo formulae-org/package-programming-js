@@ -1,6 +1,6 @@
 # package-programming-js
 
-Structured programming for [Fōrmulæ](https://formulae.org) — the visual environment for **computing**, **composing**, and **conversing** with tree-structured expressions.
+Structured programming for [Fōrmulæ](https://formulae.org) — the visual environment for **composing**, **conversing**, and **computing** with tree-structured expressions.
 
 This repository contains the **programming package**: visualization (in two styles — flowchart and indented code) and reduction of structured-programming expressions (blocks, conditionals, loops). These expressions make Fōrmulæ a [Turing-complete](https://formulae.org/?script=examples/Universal_Turing_machine) visual programming language.
 
